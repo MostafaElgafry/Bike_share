@@ -195,6 +195,32 @@ def trip_duration_stats(df):
        print('Count:', mean_travel_count)
        print("\nThis took %s seconds." % (time.time() - start_time))
        print('-'*40)
+def user_stats(df,city):
+       """Displays statistics on bikeshare users."""
+
+       print('\nCalculating User Stats...\n')
+       start_time = time.time()
+
+       # Display counts of user types
+       print('Counts of each user types:')
+       user_type = df['User Type'].value_counts()
+       print(user_type)
+       if city == 'washington':
+              print('Sorry,counts of each gender and the most common year of birth is available for washington city!')
+       else:
+
+              # Display counts of gender
+              print('Counts of each gender:')
+              gender = df['Gender'].value_counts()
+              print(gender)
+              # Display earliest, most recent, and most common year of birth
+              common_year = df['Birth Year'].value_counts().idxmax()
+              print('Common year of birth:', int(common_year))
+              common_year_count = df['Birth Year'].value_counts().max()
+              print('Count:', common_year_count)
+
+       print("\nThis took %s seconds." % (time.time() - start_time))
+       print('-'*40)       
 def main():
     while True:
         city, month, day = get_filters()
