@@ -220,7 +220,25 @@ def user_stats(df,city):
               print('Count:', common_year_count)
 
        print("\nThis took %s seconds." % (time.time() - start_time))
-       print('-'*40)       
+       print('-'*40)
+def display_raw_data(df):
+       n = 5
+       while True:
+              print('Do you want to see the first 5 lines of raw data (yes or no)?')
+              display = input().lower()
+              if display == 'yes':
+                     print(df.head(5))
+                     while True:
+                            print('Do you want to see another 5 lines of raw data (yes or no)?')
+                            display = input().lower()
+                            if display == 'yes':
+                                   n += 5
+                                   print(df.head(n))
+                            else:
+                                   return 0
+
+              else:
+                     break       
 def main():
     while True:
         city, month, day = get_filters()
