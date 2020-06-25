@@ -14,5 +14,4 @@ This project make use of Python to explore data related to bike share systems fo
 - bikeshare.py
 
 ### Credits
-It's important to give proper credit. Add links to any repo that inspired you or blogposts you consulted.
-
+Bikeshare is created and maintained by [Moustafa Mohamed](https://github.com/MostafaElgafry/Bike_share)
