@@ -175,14 +175,33 @@ def station_stats(df):
        print('Count:', trib_count)
 
        print("\nThis took %s seconds." % (time.time() - start_time))
-       print('-'*40)       
+       print('-'*40)
+def trip_duration_stats(df):
+       """Displays statistics on the total and average trip duration."""
+
+       print('\nCalculating Trip Duration...\n')
+       start_time = time.time()
+       # display total travel time
+       total_travel_time = df['Trip Duration'].sum()
+       print('Total travel time:',total_travel_time)
+       total_travel_count= df['Trip Duration'].count()
+       print('Total travel count:',total_travel_count)
+       travel_avg = total_travel_time/total_travel_count
+       print('Travel time average:',travel_avg)
+       # display mean travel time
+       mean_travel_time = df['Trip Duration'].value_counts().idxmax()
+       print('mean travel time:',mean_travel_time)
+       mean_travel_count = df['Trip Duration'].value_counts().max()
+       print('Count:', mean_travel_count)
+       print("\nThis took %s seconds." % (time.time() - start_time))
+       print('-'*40)
 def main():
     while True:
         city, month, day = get_filters()
         df = load_data(city, month, day)
         time_stats(df)
         station_stats(df)
-        #trip_duration_stats(df)
+        trip_duration_stats(df)
         #user_stats(df,city)
         #display_raw_data(df)
         restart = input('\nWould you like to restart? Enter yes or no.\n')
